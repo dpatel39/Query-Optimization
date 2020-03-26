@@ -1,0 +1,29 @@
+## basic information
+- name: [Dhruchita Patel]
+- netid: [dpatel39]
+
+
+## query 2 
+
+- A Description of how you optimize the query
+
+
+[- Created indexes on columns p_type and p_size, replaced "like" with "=" clause because the like clause does not utilize the index.]
+
+- The optimized query shows [98.00] % improvement over baseline. 
+
+
+## query 3
+- A Description of how you optimize the query
+
+[None of the columns from customer table are in output table, so substituted that table join with a subquery. Replaced l_orderkey with o_orderkey in select and group by clauses to avoid additional scanning of lineitem table. This also avoided the use of B-tree index for group by. Created index on mktsegment column in customer table for quick scan and find. ]
+
+- The optimized query shows [56.51] % improvement over baseline. 
+
+
+## query 4 
+- A Description of how you optimize the query
+
+[Created covering indexes (1) on columns (o_orderpriority,o_orderdate) of table orders (2) on columns (l_commitdate, l_receiptdate) of table line item. Using this type of index is helpful in that it reduces redundant scanning of the tables]
+
+- The optimized query shows [14.77] % improvement over baseline.
